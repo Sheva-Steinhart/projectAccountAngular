@@ -1,0 +1,21 @@
+{
+  "name": "projectaccountangular",
+  "version": "1.0.0",
+  "description": "\"project with esty\"",
+  "main": "Node.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "C:/shevy/angular/projactWithSt/projectAccountAngular/.git/"
+  },
+  "keywords": [
+    "1234"
+  ],
+  "author": "shevy",
+  "license": "ISC",
+  "dependencies": {
+    "primeng": "^17.18.10"
+  }
+}
