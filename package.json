@@ -14,5 +14,8 @@
     "1234"
   ],
   "author": "shevy",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "primeng": "^17.18.10"
+  }
 }
