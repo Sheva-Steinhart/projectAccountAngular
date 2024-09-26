@@ -1,15 +1,16 @@
 require('dotenv').config();
-const { getClient } = require('../../../services/mongo/mongo-connection');
-const { MongoOprations } = require('../../../services/mongo/mongo-operations');
-const { openConnection } = require('../../../services/mongo/mongo-connection')
+const { getClient } = require('../../../services/mongo-connection');
+const { MongoOprations } = require('../../../services/mongo-operations');
+const { openConnection } = require('../../../services/mongo-connection')
+
 const { TEST_MONGO_SERVER, TEST_MONGO_COLLECTION, TEST_MONGO__DB, MONGO_CUSTOMERS_COLLECTION, MONGO_INVOICE_DB } = process.env
 
 describe('MongoOperations', () => {
     let mongo;
+
     beforeAll(async () => {
         await openConnection(TEST_MONGO_SERVER)
         mongo = new MongoOprations(TEST_MONGO__DB);
-        console.log("kjh")
     });
 
     afterAll(async () => {
@@ -30,8 +31,11 @@ describe('MongoOperations', () => {
         mongo.myCollection = client.db(TEST_MONGO__DB).collection(TEST_MONGO_COLLECTION);
         const testItem = { "name": "ronen" };
         const result = await mongo.insertItem(testItem);
+
         expect(result).toBeDefined();
         expect(result.acknowledged).toBeTruthy();
+
+
     });
 
     it('insertList should insert a list into the collection', async () => {
@@ -40,6 +44,7 @@ describe('MongoOperations', () => {
         mongo.myCollection = client.db(TEST_MONGO__DB).collection(TEST_MONGO_COLLECTION);
         const testList = [{ name: "ronen" }, { name: "chaya" }, { name: "gila" }];
         const result = await mongo.insertList(testList);
+
         expect(result).toBeDefined();
         expect(result.acknowledged).toBeTruthy();
         expect(result.insertedCount).toEqual(3)
@@ -55,4 +60,5 @@ describe('MongoOperations', () => {
         expect(result).toBeDefined();
         expect(result[0].name).toEqual(name)
     })
+
 });

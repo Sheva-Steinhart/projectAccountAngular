@@ -1,6 +1,7 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient } = require('mongodb');
 
-let client = null
+let client = null;
+
 async function openConnection(server) {
     if (server == undefined || server == null) {
         throw new Error('server url is not defined')
@@ -21,10 +22,9 @@ async function openConnection(server) {
 }
 
 async function closeConnection() {
-    await Client.close()
+    await client.close();
 }
 
 const getClient = () => client
-
 
 module.exports = { openConnection, getClient, closeConnection }
