@@ -13,11 +13,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { inject} from '@angular/core';
+import {ReceiptsCardComponent} from '../receipts-card/receipts-card.component'
 
 @Component({
   selector: 'app-customer-receipts',
   standalone: true,
   providers: [provideNativeDateAdapter()],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
   imports: [
     FormsModule,
@@ -28,7 +33,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
     ReactiveFormsModule,
     AsyncPipe,
-    MatFormFieldModule, MatInputModule, MatDatepickerModule, MatButtonModule
+    MatFormFieldModule, MatInputModule,
+    MatDatepickerModule, MatButtonModule,MatDialogModule
   ],  templateUrl: './customer-receipts.component.html',
   styleUrl: './customer-receipts.component.scss'
 })
@@ -36,9 +42,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class CustomerReceiptsComponent {
   myControl = new FormControl<string | Customer>('');
   options: Customer[] = [{customerId:1,customerName: 'Mary'}, {customerId:2,customerName: 'tamer'},{customerId:3,customerName: 'khjg'},];
-
   filteredOptions!:Observable<Customer[]>
-  
+
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -48,7 +53,19 @@ export class CustomerReceiptsComponent {
       }),
     );
   }
-  
+  readonly dialog = inject(MatDialog);
+
+  openDialog() {
+    console.log(this.myControl.value);
+    
+    const dialogRef = this.dialog.open(ReceiptsCardComponent,{ data: { name: this.myControl.value
+    }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+ 
   displayFn(user: Customer): string {
     return user && user.customerName ? user.customerName : '';
   }
