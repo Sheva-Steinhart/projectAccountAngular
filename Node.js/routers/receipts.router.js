@@ -51,6 +51,7 @@ router.get('/getReceiptsBetweenDays/:startDate/:endDate', async (req, res) => {
         }
     }
 })
+
 router.get('/getReceiptsByCustName/:name', async (req, res) => {
     try {
 
@@ -68,6 +69,7 @@ router.get('/getReceiptsByCustName/:name', async (req, res) => {
         }
     }
 })
+
 router.get('/getReceiptsByMonth/:month', async (req, res) => {
     try {
         const { month } = req.params;
@@ -99,4 +101,5 @@ router.get('/getReceiptsByYear/:year', async (req, res) => {
         }
     }
 })
+
 module.exports = router;

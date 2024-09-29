@@ -14,7 +14,6 @@ const createNewExpenses = async (expenses) => {
     }
 }
 
-
 const getAllExpenses = async () => {
     mongoOprations.Collection = MONGO_EXPENSES_COLLECTION;
     try {
@@ -25,7 +24,6 @@ const getAllExpenses = async () => {
         throw error;
     }
 }
-
 
 const getExpensesByMonth = async (month) => {
     const response = await getAllExpenses();
@@ -46,7 +44,6 @@ const getExpensesByYear = async (year) => {
     })
     return data;
 }
-
 
 const getExpensesBetweenDates = async (startDate, endDate) => {
     mongoOprations.Collection = MONGO_EXPENSES_COLLECTION;
@@ -73,6 +70,5 @@ const getExpensesBetweenDates = async (startDate, endDate) => {
         throw error;
     }
 }
-
 
 module.exports = { createNewExpenses, getAllExpenses, getExpensesByMonth, getExpensesByYear, getExpensesBetweenDates }

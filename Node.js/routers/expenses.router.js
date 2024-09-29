@@ -18,7 +18,6 @@ router.post('/createNewExpenses', express.json(), async (req, res) => {
     }
 })
 
-
 router.get('/getAllExpenses', async (req, res) => {
     try {
         const response = await getAllExpenses();

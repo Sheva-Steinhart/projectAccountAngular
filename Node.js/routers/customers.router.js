@@ -51,7 +51,6 @@ router.get('/existCustomer/:name', async (req, res) => {
   }
 })
 
-
 router.get('/getCustomerByName/:name', async (req, res) => {
   try {
     const { name } = req.params;
@@ -67,6 +66,5 @@ router.get('/getCustomerByName/:name', async (req, res) => {
     }
   }
 })
-
 
 module.exports = router

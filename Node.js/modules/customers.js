@@ -37,7 +37,6 @@ const getAllCustomers = async () => {
     }
 }
 
-
 const existCustomer = async (name) => {
     mongoOprations.Collection = MONGO_CUSTOMERS_COLLECTION;
 
@@ -55,7 +54,6 @@ const existCustomer = async (name) => {
         throw error;
     }
 }
-
 
 const getCustomerByName = async (name) => {
     mongoOprations.Collection = MONGO_CUSTOMERS_COLLECTION;

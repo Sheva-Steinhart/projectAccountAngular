@@ -29,7 +29,6 @@ const getAllReceipts = async () => {
     }
 }
 
-
 const getReceiptsBetweenDays = async (startDate, endDate) => {
     mongoOprations.Collection = MONGO_RECEIPTS_COLLECTION;
     const filter = {
@@ -47,6 +46,7 @@ const getReceiptsBetweenDays = async (startDate, endDate) => {
         throw error;
     }
 }
+
 const getReceiptsByCustName = async (cn) => {
     mongoOprations.Collection = MONGO_RECEIPTS_COLLECTION;
 
@@ -59,7 +59,6 @@ const getReceiptsByCustName = async (cn) => {
     }
 
 }
-
 
 const getReceiptsByMonth = async (month) => {
     const response = await getAllReceipts();
