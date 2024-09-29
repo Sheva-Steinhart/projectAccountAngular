@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { getClient, openConnection, closeConnection } = require('../../../services/mongo/mongo-connection')
+const { getClient, openConnection, closeConnection } = require('../../../services/mongo-connection')
 const { isConnected } = require('./mongo-helpers')
 
 const { TEST_MONGO_SERVER } = process.env
