@@ -7,22 +7,35 @@ import { CustomerReceiptsComponent } from './components/customer-receipts/custom
 import { Router } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NgIf } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+//היה לי שגיאת core בגלל שורה זו 
+//import { BrowserModule } from '@angular/platform-browser';
+//אז הייתי צריכה להחליף אותה לשורה זו:
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { DataService } from './Services/services/data.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
+
+  imports: [
+    CommonModule,
     RouterModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    DataSegmentationComponent,
     CustomerReceiptsComponent,
     HomeComponent,
     NgIf,
-    MatTabsModule,
-    DataSegmentationComponent],
+    MatTabsModule
+    ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   navigateTo(route: string) {
     this.router.navigateByUrl(route);
