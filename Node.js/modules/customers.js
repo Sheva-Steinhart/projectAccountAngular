@@ -6,10 +6,10 @@ const { MONGO_ACCOUNTING_DB, MONGO_CUSTOMERS_COLLECTION } = process.env;
 const mongoOprations = new MongoOprations(MONGO_ACCOUNTING_DB)
 
 const createNewCustomer = async (customer) => {
-    const client = await existCustomer(customer.name);
+    const client = await existCustomer(customer.customerName);
     if (client) {
         const error = {
-            message: `username '${customer.name}' is not available`,
+            message: `username '${customer.customerName}' is not available`,
             type: 422
         }
         throw error
@@ -37,17 +37,17 @@ const getAllCustomers = async () => {
     }
 }
 
-const existCustomer = async (name) => {
+const existCustomer = async (customerName) => {
     mongoOprations.Collection = MONGO_CUSTOMERS_COLLECTION;
 
-    if (name == undefined || name == null) {
-        throw new Error('name is not defined')
+    if (customerName == undefined || customerName == null) {
+        throw new Error('customerName is not defined')
     }
-    if (typeof (name) !== 'string') {
-        throw new Error('name must be type of string')
+    if (typeof (customerName) !== 'string') {
+        throw new Error('customerName must be type of string')
     }
     try {
-        const response = await mongoOprations.find({ filter: { name } })
+        const response = await mongoOprations.find({ filter: { customerName } })
         return response.length > 0;
     }
     catch (error) {
@@ -55,17 +55,17 @@ const existCustomer = async (name) => {
     }
 }
 
-const getCustomerByName = async (name) => {
+const getCustomerByName = async (customerName) => {
     mongoOprations.Collection = MONGO_CUSTOMERS_COLLECTION;
 
-    if (name == undefined || name == null) {
-        throw new Error('name is not defined')
+    if (customerName == undefined || customerName == null) {
+        throw new Error('customerName is not defined')
     }
-    if (typeof (name) !== 'string') {
-        throw new Error('name must be type of string')
+    if (typeof (customerName) !== 'string') {
+        throw new Error('customerName must be type of string')
     }
     try {
-        const response = await mongoOprations.find({ filter: { name } })
+        const response = await mongoOprations.find({ filter: { customerName } })
         return response;
     }
     catch (error) {

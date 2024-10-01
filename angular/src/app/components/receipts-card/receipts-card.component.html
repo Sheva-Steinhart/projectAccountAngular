@@ -1,0 +1,9 @@
+
+<h2 mat-dialog-title> customer receipt</h2>
+<mat-dialog-content class="mat-typography">
+  <p [innerText]="data.name"></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="saveData()" cdkFocusInitial>to save in database</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>to edit</button>
+</mat-dialog-actions>

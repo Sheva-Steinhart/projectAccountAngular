@@ -1,15 +1,15 @@
 <div>
-
+    <!-- שם לקוח -->
     <mat-form-field class="example-form">
         <mat-label>Customer</mat-label>
         <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
-            <mat-option [value]="option">{{option.customerName}}</mat-option>
+            <mat-option [value]="option">{{option.name}}</mat-option>
             }
         </mat-autocomplete>
     </mat-form-field>
-
+    <!-- תאריך -->
     <mat-form-field class="example-form">
         <mat-label>date</mat-label>
         <input matInput [matDatepicker]="datepicker" />
@@ -22,12 +22,12 @@
         </mat-datepicker>
 
     </mat-form-field>
-
+    <!-- כמות -->
     <mat-form-field class="example-form">
         <mat-label>amount</mat-label>
         <input type="number" matInput>
     </mat-form-field>
-
+    <!-- סוג תשלום -->
     <mat-form-field class="example-form">
         <mat-label>paymentType</mat-label>
         <mat-select>
@@ -36,11 +36,10 @@
             <mat-option value="option3">העברה בנקאית</mat-option>
         </mat-select>
     </mat-form-field>
-
-
+    <!-- פירוט -->
     <mat-form-field class="example-form">
         <mat-label>explanation</mat-label>
         <textarea matInput></textarea>
-    </mat-form-field>
-<input type="button" value="save">
+    </mat-form-field><br>
+    <button  mat-button (click)= "openDialog()" > הדפסת הקבלה </button >
 </div>
